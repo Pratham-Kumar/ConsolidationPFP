@@ -1,0 +1,987 @@
+<mvc:View 
+controllerName="com.sap.consolidationpfp.controller.View1"
+     xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:uxap="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+ xmlns:table="sap.ui.table"
+ 
+>
+    <Page id="_IDGenPage1" title="{i18n>Consolidated PFP}">
+        <content>
+         <uxap:ObjectPageLayout
+                id="ObjectPageLayout"
+                upperCaseAnchorBar="false"
+                showAnchorBar="true"
+                enableLazyLoading="true"
+            >
+                <uxap:sections>
+                    <uxap:ObjectPageSection
+                        id="_IDGenObjectPageSection1"
+                        showTitle="false"
+                    >
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection
+                                id="_IDGenObjectPageSubSection1"
+                                title="General Info"
+                            >
+                                <uxap:blocks>
+                                    <HBox>
+                                      <Label
+                                            id="_IDGenLabel3"
+                                            text="Planning Year"
+                                            width="100%"
+                                            class="sapUiTinyMarginTop"
+                                        />
+                                      <DatePicker
+                                            id="_IDGenInput2"
+                                            value=""
+                                            width="150px"
+                                            displayFormat="yyyy"
+                                            class="sapUiTinyMarginBegin"
+                                        />
+                                       
+                                    </HBox>
+                                </uxap:blocks>
+                                
+                            </uxap:ObjectPageSubSection>
+                            <uxap:ObjectPageSubSection
+                                id="_IDGenObjectPageSubSection6"
+                                title="List Items"
+                            >
+                                <uxap:blocks>
+                                   <ScrollContainer id="_IDGenScrollContainer1"
+                horizontal="true"
+                vertical="true"
+                focusable="true"
+            >
+            <Table
+                id="itemsTable"
+                inset="false"
+                items="{nModel>/}"
+                fixedLayout="false"
+                selectionChange="onTableSelectionChange"
+                width="100%"
+                mode="MultiSelect"
+                class="customTable"
+            >
+                <headerToolbar>
+                    <OverflowToolbar
+                        id="_IDGenOverflowToolbar1"
+                        width="200%"
+                    >
+                        <Title
+                            id="_IDGenTitle1"
+                            text=""
+                        />
+                        <Button id="_IDGenButton2"
+                            icon="sap-icon://sort"
+                            press="onExport"
+                        />
+                        <SearchField id="_IDGenSearchField1"
+                            liveChange=".onSearch"
+                            width="10%"
+                        />
+                        <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                        <!-- <Button
+                            id="_IDGenButton1"
+                            icon="sap-icon://save"
+                            press="onAddItemPress"
+                        /> -->
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="itemColumn10"  >
+                        <Text
+                            id="itemIdColumnHeader10"
+                            text="Department"
+                            width="6rem"
+                        />
+                    </Column>
+                    <Column id="itemColumn1">
+                        <Text
+                            id="itemIdColumnHeader"
+                            text="Demand ID"
+                            width="6rem"
+                        />
+                    </Column>
+
+                    <Column id="itemColumn5">
+                        <Text
+                            id="quantityUnitColumnHeader"
+                            text="Activity Description EN"
+                            width="12rem"
+                            class="bb"
+                        />
+                    </Column>
+                     <Column id="itemColumn2">
+                        <Text
+                            id="materialNumColumnHeader"
+                            text="Project Name"
+                            width="7rem"
+                        />
+                    </Column>
+
+                   
+                    <Column id="itemColumn3">
+                        <Text
+                            id="materialDescColumnHeader"
+                            text="FPAL Code"
+                            width="4rem"
+                        />
+                    </Column>
+                    <Column id="itemColumn4">
+                        <Text
+                            id="quantityColumnHeader"
+                            text="FPAL Description"
+                            width="9rem"
+                        />
+                    </Column>
+                     <Column id="itemColumn6">
+                        <Text
+                            id="netPriceColumnHeader"
+                            text="Activity Description RU"
+                            width="12rem"
+                            
+                        />
+                    </Column>
+                     <Column id="newItemColumn2_unique1">
+                        <Text
+                            id="newMaterialNumColumnHeader_unique1"
+                            text="G/W/S "
+                            width="4rem"
+                        />
+                    </Column>
+                    <Column id="itemColumn8">
+                        <Text
+                            id="taxAmountColumnHeader"
+                            text="Required Award Date"
+                            width="8rem"
+                        />
+                    </Column>
+                     <Column id="newItemColumn3_unique1">
+                        <Text
+                            id="newMaterialDescColumnHeader_unique1"
+                            text="Quantity/Volume"
+                            width="7rem"
+                        />
+                    </Column>
+                     <Column id="newItemColumn4_unique1">
+                        <Text
+                            id="newQuantityColumnHeader_unique1"
+                            text="UoM"
+                            width="4rem"
+                            class="bb"
+                        />
+                    </Column>
+                   
+                    
+                    
+                         <!-- <Column id="newItemColumn2_unique11">
+                        <Text
+                            id="newMaterialNumColumnHeader_unique11"
+                            text="ACP"
+                            width="4rem"
+                        />
+                    </Column>
+                      <Column id="newItemColumn2_unique12">
+                        <Text
+                            id="newMaterialNumColumnHeader_unique12"
+                            text="Actual Award Date Of The NEW Contract"
+                            width="7rem"
+                        />
+                    </Column> -->
+                   
+                    <Column id="newItemColumn7">
+                        <Text
+                            id="newCurrencyColumnHeader"
+                            text="1 Short Term 2024"
+                           
+                        />
+                    </Column>
+
+                    <Column id="newItemColumn8">
+                        <Text
+                            id="newTaxAmountColumnHeader"
+                            text="2 Mid Term 2025"
+                        />
+                    </Column>
+                    <Column id="newItemColumn9">
+                        <Text
+                            id="newId1"
+                            text="3 Mid Term 2026"
+                        />
+                    </Column>
+                    <Column id="newItemColumn10">
+                        <Text
+                            id="newId2"
+                            text="4 Mid Term 2027"
+                        />
+                    </Column>
+                    <Column id="newItemColumn11">
+                        <Text
+                            id="newId3"
+                            text="5 Mid Term 2028"
+                        />
+                    </Column>
+                    <Column id="newItemColumn12">
+                        <Text
+                            id="newId4"
+                            text="6 Long Term 2029"
+                        />
+                    </Column>
+                    <Column id="newItemColumn13">
+                        <Text
+                            id="newId5"
+                            text="7 Long Term 2030"
+                        />
+                    </Column>
+                    <Column id="newItemColumn14">
+                        <Text
+                            id="newId6"
+                            text="8 Long Term 2031"
+                        />
+                    </Column>
+                    <Column id="newItemColumn15">
+                        <Text
+                            id="newId7"
+                            text="9 Long Term 2032"
+                        />
+                    </Column>
+                    <Column id="newItemColumn16">
+                        <Text
+                            id="newId8"
+                            text="10 Long Term 2033"
+                        />
+                    </Column>
+                    <Column id="newItemColumn161">
+                            <Text
+                                id="newId81"
+                                text="Total Estimated Value"
+
+                            />
+                    </Column>
+                    <Column id="newItemColumn17"
+                            width="9rem"
+                    >
+                        <Text
+                            id="newId9"
+                            text="Total Estimated Value, $min"
+                            width="5rem"
+                            class="bb"
+                        />
+                    </Column>
+                   
+
+                    <Column
+                        id="itemColumn4Updated"
+                        width="7rem"
+                    >
+                        <Text
+                            id="quantityColumnHeaderUpdated"
+                            text="Contract Type"
+                        />
+                    </Column>
+                    <Column id="newItemColumn2"
+                            width="9rem"
+                    >
+                        <Text
+                            id="newMaterialNumColumnHeader"
+                            text="Contract Firm Duration (months)"
+                            width="7rem"
+                        />
+                    </Column>
+
+                    <Column id="newItemColumn3">
+                        <Text
+                            id="newMaterialDescColumnHeader"
+                            text="Duration Of OE (months)"
+                            width="7rem"
+                        />
+                    </Column>
+
+                    <Column
+                        id="itemColumn3Updated"
+                        width="9rem"
+                    >
+                        <Text
+                            id="materialDescColumnHeaderUpdated"
+                            text="Tendering Strategy"
+                        />
+                    </Column>
+                  
+                    <Column id="itemColumn5Updated">
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated"
+                            text="PR Number"
+                            width="6.5rem"
+                        />
+                    </Column>
+                    <Column id="itemColumn6Updated">
+                        <Text
+                            id="netPriceColumnHeaderUpdated"
+                            text="Estimated PR Issue Date"
+                            width="8rem"
+                        />
+                    </Column>
+                    
+                  
+                    <Column
+                        id="itemColumn7Updated"
+                        width="6.5rem"
+                    >
+                        <Text
+                            id="currencyColumnHeaderUpdated"
+                            text="LC Targets, %"
+                            width="7rem"
+                            class="bb"
+                        />
+                    </Column>
+                    <Column id="itemColumn3Updated11">
+                        <Text
+                            id="materialDescColumnHeaderUpdated1"
+                            text="Contact Owner Name"
+                            width="7rem"
+                        />
+                    </Column>
+
+                    <Column id="itemColumn4Updated1">
+                        <Text
+                            id="quantityColumnHeaderUpdated1"
+                            text="Contact Owner Position Name"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1"
+                            text="User Focal Point Name"
+                            width="7rem"
+                            class="bb"
+                        />
+                    </Column>
+                     <Column id="itemColumn81">
+                        <Text
+                            id="taxAmountColumnHeade1r"
+                            text="Existing Contract Number"
+                            width="8rem"
+                        />
+                    </Column>
+                     <Column id="itemColumn810">
+                        <Text
+                            id="taxAmountColumnHeader108"
+                            text="PR Number for Amendment"
+                            width="8rem"
+                        />
+                    </Column>
+                    <Column id="itemColumn811">
+                        <Text
+                            id="taxAmountColumnHeader101"
+                            text="PR Purpose"
+                            width="8rem"
+                        />
+                    </Column>
+                     <Column id="itemColumn6Updated0000">
+                        <Text
+                            id="netPriceColumnHeaderUpdated0000"
+                            text="Estimated PR Issue Date"
+                            width="8rem"
+                        />
+                    </Column>
+                    
+                         <Column id="newItemColumn2_unique11">
+                        <Text
+                            id="newMaterialNumColumnHeader_unique11"
+                            text="ACP"
+                            width="4rem"
+                        />
+                    </Column>
+                      <Column id="newItemColumn2_unique12">
+                        <Text
+                            id="newMaterialNumColumnHeader_unique12"
+                            text="Actual Award Date Of The NEW Contract"
+                            width="7rem"
+                        />
+                    </Column>
+                    <!-- <Column
+                        id="itemColumn5Updated21"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated21"
+                            text="Date when PR to be issued C and P per aplicaton Timeframe"
+                            width="10rem"
+                        />
+                    </Column> -->
+                     <Column
+                        id="itemColumn5Updated31"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated31"
+                            text="PR Reciept Date by C and P per PSR"
+                            width="8rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated41"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated41"
+                            text="PR Status"
+                            width="7rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated5"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated51"
+                            text="Progress Status PSR"
+                            width="12rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated61"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated61"
+                            text="PSR Current Procurement Stage"
+                            width="10rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated71"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated71"
+                            text="PSR Comments"
+                            width="12rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated81"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated81"
+                            text="Date Market Research to be initiated"
+                            width="7rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated91"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated91"
+                            text="Market Research Package Receipt Date by C and P"
+                            width="7rem"
+                        />
+                    </Column>
+                     <Column
+                        id="itemColumn5Updated101"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated101"
+                            text="ICP Code"
+                            width="7rem"
+                        />
+                    </Column>
+<!--                  
+                      <Column
+                        id="itemColumn5Updated111"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated111"
+                            text="PR Number (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated112"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated112"
+                            text="Incoming Date PSR (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated113"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated113"
+                            text="PR Description PSR (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                     
+                    
+
+
+                      <Column
+                        id="itemColumn5Updated1111"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11211"
+                            text="PR Number (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1122"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1122"
+                            text="Incoming Date PSR (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1133"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1133"
+                            text="PR Description PSR (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated11111"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11111"
+                            text="PR Number (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1112"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1112"
+                            text="Incoming Date PSR (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1113"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1113"
+                            text="PR Description PSR (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                       <Column
+                        id="itemColumn5Updated1119"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1119"
+                            text="Comments (Amendment)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1511"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1511"
+                            text="PR Number (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated5112"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated5112"
+                            text="Incoming Date PSR (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated1513"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated1513"
+                            text="PR Description PSR (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                     
+                    
+
+
+                      <Column
+                        id="itemColumn5Updated134111"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated111211"
+                            text="PR Number (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated11122"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11122"
+                            text="Incoming Date PSR (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated11133"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11133"
+                            text="PR Description PSR (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated111111"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated111111"
+                            text="PR Number (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated11112"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11112"
+                            text="Incoming Date PSR (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column>
+                      <Column
+                        id="itemColumn5Updated11113"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11113"
+                            text="PR Description PSR (New Tender/SSN)"
+                            width="7rem"
+                        />
+                    </Column> -->
+                       <Column
+                        id="itemColumn5Updated11119"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated11119"
+                            text="Latest Comments"
+                            width="7rem"
+                        />
+                    </Column>
+                    <Column
+                        id="itemColumn5Updated111190"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated111190"
+                            text="Comments"
+                            width="7rem"
+                        />
+                    </Column>
+                    <!-- <Column id="itemColumn5Updated13">
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated13"
+                            text="Latest Comment"
+                            width="8.5rem"
+                        />
+                    </Column>
+                    <Column
+                        id="itemColumn5Updated12"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated12"
+                            text="Comments"
+                            width="7rem"
+                        />
+                    </Column> -->
+                     <Column
+                        id="itemColumn5Updated12"
+                        width="10rem"
+                    >
+                        <Text
+                            id="quantityUnitColumnHeaderUpdated12"
+                            text=""
+                            width="7rem"
+                        />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem
+                        id="itemRow"
+                        class="hover"
+                       
+                    >
+                        <cells>
+                        
+                            <Text id="_IDGenText01" text="{nModel>Department}" />
+                            <Text id="_IDGenText1" text="{nModel>DemandId}" />
+                            <Text id="_IDGenText2" text="{nModel>ActivityDescEN}" class="bb" width="12rem"  />
+                            <Text id="_IDGenText6" text="{nModel>ProjectName}" />
+                            <Text id="_IDGenText4" text="{nModel>FPALCode}" />
+                            <Text id="_IDGenText5" text="{nModel>FPALDesc}" />
+                            <Text id="_IDGenText3" text="{nModel>ActivityDescRU}" />
+                            <Text id="_IDGenText121" text="{nModel>GWS}" />
+                            <Text id="_IDGenText7" text="{nModel>ReqAwardDate}" />
+                            <Text id="_IDGenText13" text="{nModel>QV}" />
+                            <Text id="_IDGenText14" text="{nModel>UoM}" class="bb" width="4rem"/>
+                            <Text id="_IDGenText17" text="{nModel>1ST}"  />
+                            <Text id="_IDGenText18" text="{nModel>2MT}" />
+                            <Text id="_IDGenText19" text="{nModel>3MT}" />
+                            <Text id="_IDGenText20" text="{nModel>4MT}" />
+                            <Text id="_IDGenText21" text="{nModel>5MT}" />
+                            <Text id="_IDGenText22" text="{nModel>6LT}" />
+                            <Text id="_IDGenText23" text="{nModel>7LT}" />
+                            <Text id="_IDGenText24" text="{nModel>8LT}" />
+                            <Text id="_IDGenText25" text="{nModel>9LT}" />
+                            <Text id="_IDGenText26" text="{nModel>10LT}" />
+                            <Text id="_IDGenText27" text="{nModel>TotalEstValue}" />
+                            <Text id="_IDGenText027" text="{nModel>TotalEstValuemin}" class="bb" width="5rem"  />
+                            <Text id="_IDGenText29" text="{nModel>ContractType}" />
+                            <Text id="_IDGenText15" text="{nModel>ContractFirm}" />
+                            <Text id="_IDGenText16" text="{nModel>DurationOfOE}" />
+                            <Text id="_IDGenText28" text="{nModel>TenderingStrategy}" />
+                            <Text id="_IDGenText9" text="{nModel>PRNum}" />
+                            <Text id="_IDGenText11" text="{nModel>EstPRIssueDate}" />
+                            <Text id="_IDGenText30" text="{nModel>LCTargets}" class="bb" width="7rem" />
+                            <Text id="_IDGenText31" text="{nModel>ContractOwnerName}" />
+                            <Text id="_IDGenText321" text="{nModel>ContractOwnerPositionName}" />
+                            <Text id="_IDGenText33" text="{nModel>UserFP}"  class="bb" width="7rem" />
+                            <Text id="_IDGenText8" text="{nModel>ExistingContractNum}" />
+                            <Text id="_IDGenText80" text="{nModel>PRNumforAmendment}" />
+                            <Text id="_IDGenText10" text="{nModel>PRPurpose}" />
+                            <Text id="_IDGenText111" text="{nModel>EstPRIssueDate1}" />
+                            <Input id="_IDGenText122" value="{nModel>ACP}" />
+                            <Input id="_IDGenText12" value="{nModel>ActualAwardDateNEWContract}" />
+                            <Input id="_IDGenText323" value="{nModel>PRRecieptDatebyCandPperPSR}" />
+                            <Input id="_IDGenText324" value="{nModel>PRStatus}" />
+                            <Input id="_IDGenText325" value="{nModel>ProgressStatusPSR}" />
+                            <Input id="_IDGenText326" value="{nModel>PSRCurrentProcurementStage}" />
+                            <Input id="_IDGenText327" value="{nModel>PSRComments}" />
+                            <Input id="_IDGenText328" value="{nModel>DateMarketResearchInitiated}" />
+                            <Input id="_IDGenText329" value="{nModel>MarketResearchPackageReceiptDatebyCandP}" />
+                            <Input id="_IDGenText320" value="{nModel>ICPCode}" />
+                            <!-- <Input id="_IDGenText331" value="{nModel>PRNumber}" />
+                            <Input id="_IDGenText332" value="{nModel>IncomingDatePSR}" />
+                            <Input id="_IDGenText333" value="{nModel>PRDescriptionPSR}" />
+                            <Input id="_IDGenText334" value="{nModel>PRNumber1}" />
+                            <Input id="_IDGenText335" value="{nModel>IncomingDatePSR1}" />
+                            <Input id="_IDGenText336" value="{nModel>PRDescriptionPSR1}" />
+                            <Input id="_IDGenText337" value="{nModel>PRNumber2}" />
+                            <Input id="_IDGenText338" value="{nModel>IncomingDatePSR2}" />
+                            <Input id="_IDGenText339" value="{nModel>PRDescriptionPSR2}" />
+                            <Input id="_IDGenText330" value="{nModel>Comments1}" />
+                            <Input id="_IDGenText3311" value="{nModel>PRNumber3}" />
+                            <Input id="_IDGenText3322" value="{nModel>IncomingDatePSR3}" />
+                            <Input id="_IDGenText3333" value="{nModel>PRDescriptionPSR3}" />
+                            <Input id="_IDGenText3344" value="{nModel>PRNumber4}" />
+                            <Input id="_IDGenText3355" value="{nModel>IncomingDatePSR4}" />
+                            <Input id="_IDGenText3366" value="{nModel>PRDescriptionPSR4}" />
+                            <Input id="_IDGenText3377" value="{nModel>PRNumber5}" />
+                            <Input id="_IDGenText3388" value="{nModel>IncomingDatePSR5}" />
+                            <Input id="_IDGenText3399" value="{nModel>PRDescriptionPSR5}" /> -->
+                            <!-- <Input id="_IDGenText3300" value="{nModel>Comments2}" /> -->
+                            <Text id="_IDGenText34" text="{nModel>LatestComment}" />
+                            <Input id="_IDGenInput1" value="{nModel>Comments}" /> 
+
+                            <Button id="_IDGenButton31"
+                                text="Comments Log"
+                                press="onCommentsLog"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            </ScrollContainer> 
+                                </uxap:blocks>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                </uxap:sections>
+            </uxap:ObjectPageLayout>
+         <!-- <f:SimpleForm
+                                        id="_IDGenSimpleForm1"
+                                        editable="false"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="2"
+                                        labelSpanL="2"
+                                        labelSpanM="2"
+                                        labelSpanS="5"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="2"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="true"
+                                    >  -->
+                                        
+
+                                    <!-- </f:SimpleForm> -->
+    
+              
+
+          <!-- <IconTabBar 
+              id="_IDGenIconTabBar1" 
+              class="toolbarMargin" 
+              expanded="false"
+              
+            >
+            <items>
+                
+                <IconTabFilter id="_IDGenIconTabFilter1"
+                    text="Comment"
+                    key="comment"
+                >
+                           
+
+                 <f:SimpleForm
+                                        id="_IDGenSimpleForm1"
+                                        editable="false"
+                                        layout="ResponsiveGridLayout"
+                                        labelSpanXL="2"
+                                        labelSpanL="2"
+                                        labelSpanM="2"
+                                        labelSpanS="5"
+                                        adjustLabelSpan="true"
+                                        emptySpanXL="0"
+                                        emptySpanL="0"
+                                        emptySpanM="0"
+                                        emptySpanS="0"
+                                        columnsXL="2"
+                                        columnsL="2"
+                                        columnsM="2"
+                                        singleContainerFullSize="true"
+                                    > 
+                                         
+                                      <Label
+                                            id="_IDGenLabel3"
+                                            text="Overall Comment"
+                                            width="100%"
+                                            class="sapUiTinyMarginTop"
+                                        />
+                                        <TextArea
+                                            id="_IDGenInput3"
+                                            value=""
+                                            width="100%"
+                                            height="100px"
+                                        />
+
+                                       
+                                         <Button id="_IDGenButton3"
+                                                 text="Comments Log Button"
+                                                 press="onCommentsLog"
+                                                 width="50%"
+                                                 class="sapUiTinyMarginTop"
+                                         />
+
+                                    </f:SimpleForm>
+                    
+                </IconTabFilter>
+            </items>
+        </IconTabBar> -->
+        </content>
+
+<footer>
+    <!-- <IconTabBar 
+        id="_IDGenIconTabBar11" 
+        class="toolbarMargin" 
+        expanded="false">
+        <items>
+            <IconTabFilter id="_IDGenIconTabFilter11"
+                text="Comment"
+                key="comment">
+                <f:SimpleForm
+                    id="_IDGenSimpleForm11"
+                    editable="false"
+                    layout="ResponsiveGridLayout"
+                    labelSpanXL="4"
+                    labelSpanL="8"
+                    labelSpanM="4"
+                    labelSpanS="12"
+                    adjustLabelSpan="true"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="2"
+                    columnsM="2"
+                    singleContainerFullSize="false">   
+                    <Label
+                        id="_IDGenLabel33"
+                        text="Overall Comment"/>
+                    <TextArea
+                        id="_IDGenInput33"
+                        value=""
+                        class="sapUiTinyMarginEnd"
+                        width="450px"
+                        height="100px"/>
+                </f:SimpleForm>
+            </IconTabFilter>
+        </items>
+    </IconTabBar> -->
+    <Bar id="_IDGenBar1">
+        <contentRight>
+            
+            <Button
+                text="Save"
+                tooltip="Save"
+                press="onSave"
+                id="Save"
+                visible="true"/>
+            <Button
+                text="Cancel"
+                tooltip="Cancel"
+                press="onCancel"
+                id="Cancel"
+                visible="true"/>
+        </contentRight>
+    </Bar>
+</footer>
+    </Page>
+</mvc:View>
